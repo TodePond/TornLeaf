@@ -1,0 +1,167 @@
+* {
+  accent-color: #4680ff;
+}
+
+body {
+  color: white;
+  background-color: rgb(31, 39, 54);
+  font-family: sans-serif;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 30px 10px;
+  font-size: 1.1em;
+}
+
+audio,
+video {
+  width: 100%;
+}
+
+a {
+  color: #46ff80;
+}
+
+a:hover {
+  color: black;
+  background-color: #46ff80;
+}
+
+ul {
+  padding-inline-start: 20px;
+}
+
+li {
+  list-style: " — ";
+  /* margin-left: 0px; */
+}
+
+a.secondary {
+  color: #4699ff;
+}
+
+a.secondary:hover {
+  color: black;
+  background-color: #4680ff;
+}
+
+a.danger {
+  color: #ff4346;
+}
+
+a.danger:hover {
+  color: black;
+  background-color: #ff4346;
+}
+
+p.secondary {
+  color: #9faeee;
+}
+
+blockquote {
+  color: #9faeee;
+  margin: 0px;
+  padding-left: 23px;
+  border-left: 1px #9faeee solid;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  width: 100%;
+}
+
+h2 {
+  border-bottom: white 1px solid;
+  padding-bottom: 19px;
+  padding-top: 19px;
+}
+
+img {
+  max-width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+  background-color: #374362;
+  border: 1px solid #9faeee;
+  color: white;
+  padding: 5px;
+  width: 100%;
+  font-size: 1em;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+  color: #9faeee;
+}
+
+:focus {
+  outline-color: 2px solid #4680ff;
+  border-radius: 0%;
+}
+
+button {
+  padding: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button.danger {
+  background-color: #ff4346;
+  color: white;
+}
+
+button.primary {
+  background-color: #4680ff;
+  color: white;
+}
+
+pre {
+  background-color: #374362;
+  /*color: white;*/
+  padding: 11px;
+  overflow-x: auto;
+}
+
+pre.changelog {
+  color: #9faeee;
+}
+
+pre.changelog mark {
+  color: white;
+}
+
+pre mark {
+  color: #46ff80;
+  background: none;
+}
+
+input[type="checkbox"] {
+  width: 29px;
+}
+
+select {
+  background-color: #374362;
+  border: 1px solid #9faeee;
+  color: white;
+  padding: 5px;
+  font-size: 1em;
+}
