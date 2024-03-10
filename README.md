@@ -4,7 +4,9 @@
 
 Torn Leaf is a gallery for art, research, papers, writing, whatever. 
 
-<hr>
+It's under construction! Visit at [tornleaf.gallery](https://tornleaf.gallery)
+
+## License
 
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
