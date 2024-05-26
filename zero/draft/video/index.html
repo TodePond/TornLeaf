@@ -1,0 +1,107 @@
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+
+<style>
+  #video {
+    width: 720px;
+    pointer-events: none;
+  }
+  html {
+    background-color: black;
+  }
+
+  body {
+    height: 4000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: black;
+    border: white 2px solid;
+    color: #fff;
+    /* border: none; */
+    cursor: pointer;
+    z-index: 1000;
+  }
+</style>
+<button>Click to start</button>
+
+<video id="video" autoplay loop></video>
+<script>
+  var video = document.getElementById("video");
+  const startTime = (Date.now() / 1000) % (10 * 60 + 15);
+  var videoSrc =
+    "https://customer-8ipv6zgcdbvqngke.cloudflarestream.com/ffec1236df5393c894ce5c85b54755b4/manifest/video.m3u8";
+  if (Hls.isSupported()) {
+    var hls = new Hls({
+      // start time
+      // startTime: startTime,
+      // capLevelToPlayerSize: true,
+      // startLevel: 3,
+      startPosition: startTime,
+    });
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+    // on load
+    hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+      // hsl.capLevelToPlayerSize = true;
+      // hls.autoLevelCapping
+      // console.log(data.levels);
+      // const _720p = data.levels.find(
+      //   (level) => level.height === 720 * devicePixelRatio
+      // );
+      // console.log(_720p);
+      // hls.currentLevel = _720p.id;
+      // hls.startLoad();
+    });
+
+    hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+      video.muted = true;
+      video.play();
+    });
+
+    //
+  }
+  // HLS.js is not supported on platforms that do not have Media Source
+  // Extensions (MSE) enabled.
+  //
+  // When the browser has built-in HLS support (check using `canPlayType`),
+  // we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video
+  // element through the `src` property. This is using the built-in support
+  // of the plain video element, without using HLS.js.
+  else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+    video.src = videoSrc;
+  }
+
+  //  when video scrolls into view
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          video.muted = false;
+          // console.log("video is in view");
+        } else {
+          video.muted = true;
+        }
+      });
+    },
+    {
+      threshold: 0.0,
+    }
+  );
+
+  observer.observe(video);
+
+  const button = document.querySelector("button");
+  button.addEventListener("click", () => {
+    button.remove();
+    video.muted = false;
+  });
+</script>
