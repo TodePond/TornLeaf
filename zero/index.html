@@ -46,6 +46,19 @@
       display: none !important;
     }
   }
+
+  .face {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .face:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  }
 </style>
 
 <article class="torn-leaf-zero">
@@ -160,9 +173,11 @@
           src="/zero/full-submissions/lu-wilson-torn-leaf-zero/arrow.png" />
       </p>
       <span style="max-width: 300px">
-        <img
-          src="/zero/full-submissions/lu-wilson-torn-leaf-zero/torn-leaf-zero.jpeg"
-          style="width: 100%" />
+        <button class="face">
+          <img
+            src="/zero/full-submissions/lu-wilson-torn-leaf-zero/torn-leaf-zero.jpeg"
+            style="width: 100%" />
+        </button>
       </span>
       <p
         class="tablet"
