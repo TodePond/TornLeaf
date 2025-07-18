@@ -4,7 +4,7 @@
   async
   src="//gc.zgo.at/count.js"></script>
 <title>Torn leaf</title>
-<link rel="shortcut icon" href="assets/logo.png" />
+<link rel="shortcut icon" href="/favicon.png" />
 <meta property="og:image" content="https://todepond.com/gallery/og.png" />
 <meta property="og:title" content="Torn leaf gallery" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -126,6 +126,11 @@
     }
   </style>
   <main>
+    <audio id="player">
+      <source
+        src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3"
+        type="audio/mpeg" />
+    </audio>
     <h1>Torn Leaf Zero</h1>
     <span style="font-size: small">curated by Lu Wilson</span>
 
@@ -173,7 +178,9 @@
           src="/zero/full-submissions/lu-wilson-torn-leaf-zero/arrow.png" />
       </p>
       <span style="max-width: 300px">
-        <button class="face">
+        <button
+          class="face"
+          data-src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3">
           <img
             src="/zero/full-submissions/lu-wilson-torn-leaf-zero/torn-leaf-zero.jpeg"
             style="width: 100%" />
@@ -450,3 +457,18 @@
   <h1>what actually happened to the leaf</h1>
   <p>by Zhenya Shur</p>
 </article>
+
+<script>
+  const player = document.getElementById("player");
+  const faces = document.querySelectorAll(".face");
+
+  faces.forEach((face) => {
+    face.addEventListener("click", () => {
+      const src = face.getAttribute("data-src");
+      if (src) {
+        player.src = src;
+        player.play();
+      }
+    });
+  });
+</script>
