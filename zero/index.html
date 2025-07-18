@@ -19,6 +19,11 @@
     box-sizing: border-box;
   }
 
+  a {
+    outline: 0px solid;
+    transition: outline 0.1s;
+  }
+
   html {
     background-color: rgb(31, 39, 54);
   }
@@ -59,14 +64,15 @@
     transition: transform 0.1s;
   }
 
-  .face img {
-    border: 5px solid white;
+  .face div {
+    border: 4px solid white;
     background: none;
     outline: 0px solid #4680ff;
     border-radius: 0px;
     transition: transform 0.1s, outline 0.1s, border-radius 0.1s,
       outline-color 0.1s;
     outline-color: transparent;
+    position: relative;
   }
 
   .face:focus {
@@ -74,27 +80,43 @@
     outline: none;
   }
 
-  .face.playing img {
-    outline: 2px solid;
-    outline-color: #4680ff;
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-
-  .face:focus img {
-    outline: 5px solid;
+  .face:focus div {
+    outline: 4px solid;
     outline-offset: 2px;
     outline-color: #4680ff;
     border-radius: 2px;
   }
-  .face:hover:focus img {
-    outline: 5px solid;
+  .face:hover:focus div {
+    outline: 4px solid;
     outline-color: #4680ff;
   }
 
-  .face.playing:focus img {
-    outline: 5px solid;
+  .face.playing:focus div {
+    outline: 4px solid;
     outline-color: #4680ff;
+  }
+
+  .face.playing div::after,
+  .face.paused div::after {
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+    font-size: 2em;
+    padding: 5px 8px;
+    z-index: 100;
+  }
+
+  .face.playing div::after {
+    content: " ▶ ";
+    font-size: 1.5em;
+    padding-top: 8px;
+  }
+
+  .face.paused div::after {
+    content: " ⏸ ";
+    padding-top: 2px;
   }
 
   .face:hover {
@@ -105,11 +127,11 @@
     transform: scale(1);
   }
 
-  .face.current img {
+  .face.current div {
     animation: hover 5s infinite;
   }
 
-  .face.current.paused img {
+  .face.current.paused div {
     animation-play-state: paused;
   }
 
@@ -118,7 +140,7 @@
       transition: none !important;
     }
 
-    .face.current img {
+    .face.current div {
       animation: none;
     }
   }
@@ -265,9 +287,11 @@
         <button
           class="face"
           data-src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3">
-          <img
-            src="/zero/full-submissions/lu-wilson-torn-leaf-zero/torn-leaf-zero.jpeg"
-            style="width: 100%" />
+          <div>
+            <img
+              src="/zero/full-submissions/lu-wilson-torn-leaf-zero/torn-leaf-zero.jpeg"
+              style="width: 100%" />
+          </div>
         </button>
       </span>
       <p
