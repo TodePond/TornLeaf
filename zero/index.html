@@ -19,6 +19,10 @@
     box-sizing: border-box;
   }
 
+  html {
+    background-color: rgb(31, 39, 54);
+  }
+
   body {
     margin: 0;
     display: flex;
@@ -60,13 +64,29 @@
     background: none;
   }
 
+  .face:focus {
+    transform: scale(1.025);
+    outline: none;
+  }
+
+  .face.playing img {
+    outline: 2px solid #4680ff;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .face:focus img {
+    outline: 5px solid #4680ff;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
   .face:hover {
     transform: scale(1.05);
   }
 
-  .face img {
-    transform: rotate(0deg);
-    transition: transform 1s;
+  .face:active {
+    transform: scale(1);
   }
 
   .face.current img {
@@ -80,14 +100,20 @@
   /* gradually increase and decrease scale */
   @keyframes hover {
     0% {
-      transform: scale(1) rotate(2deg);
+      transform: scale(1);
     }
     50% {
-      transform: scale(0.95) rotate(2deg);
+      transform: scale(0.95);
     }
     100% {
-      transform: scale(1) rotate(2deg);
+      transform: scale(1);
     }
+  }
+
+  *:focus {
+    outline: 4px solid #4680ff;
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 </style>
 
@@ -214,7 +240,12 @@
       </span>
       <p
         class="tablet"
-        style="transform: rotate(20deg); font-size: medium; min-width: 200px">
+        style="
+          transform: rotate(20deg) translateX(-2px);
+          font-size: medium;
+          min-width: 200px;
+          position: relative;
+        ">
         <span>(click on any person's face to hear them talk)</span>
         <br />
         <img
