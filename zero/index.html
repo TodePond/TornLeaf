@@ -49,15 +49,45 @@
 
   .face {
     border: none;
-    background: none;
+    background-color: transparent;
     padding: 0;
     cursor: pointer;
     transition: transform 0.1s, box-shadow 0.1s;
   }
 
+  .face img {
+    border: 4px solid white;
+    background: none;
+  }
+
   .face:hover {
     transform: scale(1.05);
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .face img {
+    transform: rotate(0deg);
+    transition: transform 1s;
+  }
+
+  .face.current img {
+    animation: hover 5s infinite;
+  }
+
+  .face.current.paused img {
+    animation-play-state: paused;
+  }
+
+  /* gradually increase and decrease scale */
+  @keyframes hover {
+    0% {
+      transform: scale(1) rotate(2deg);
+    }
+    50% {
+      transform: scale(0.95) rotate(2deg);
+    }
+    100% {
+      transform: scale(1) rotate(2deg);
+    }
   }
 </style>
 
@@ -126,11 +156,7 @@
     }
   </style>
   <main>
-    <audio id="player">
-      <source
-        src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3"
-        type="audio/mpeg" />
-    </audio>
+    <audio id="player"></audio>
     <h1>Torn Leaf Zero</h1>
     <span style="font-size: small">curated by Lu Wilson</span>
 
@@ -462,12 +488,74 @@
   const player = document.getElementById("player");
   const faces = document.querySelectorAll(".face");
 
+  let currentSrc = null;
+  let currentFace = null;
+
+  player.addEventListener("ended", () => {
+    // When the audio ends, remove 'current' and 'playing' classes from the current face
+    if (currentFace) {
+      currentFace.classList.remove("current");
+      currentFace.classList.remove("playing");
+      currentFace.classList.remove("paused");
+    }
+    currentSrc = null;
+    currentFace = null;
+  });
+
+  player.addEventListener("pause", () => {
+    // When the audio is paused, remove 'playing' class from the current face
+    if (currentFace) {
+      currentFace.classList.remove("playing");
+      currentFace.classList.add("paused");
+    }
+  });
+
+  player.addEventListener("play", () => {
+    // When the audio is played, add 'playing' class to the current face
+    if (currentFace) {
+      currentFace.classList.remove("paused");
+      currentFace.classList.add("playing");
+    }
+  });
+
   faces.forEach((face) => {
     face.addEventListener("click", () => {
       const src = face.getAttribute("data-src");
-      if (src) {
+
+      // If the src is already set, play/pause it
+      if (currentSrc === src) {
+        if (player.paused) {
+          player.play();
+
+          // Remove 'paused' class from the clicked face and add 'playing'
+          face.classList.remove("paused");
+          face.classList.add("playing");
+        } else {
+          player.pause();
+
+          // Remove 'playing' class from the clicked face and add 'paused'
+          face.classList.remove("playing");
+          face.classList.add("paused");
+        }
+      } else {
+        // If it's a new src, change it and play
         player.src = src;
         player.play();
+
+        // Remove 'current' and 'playing' and 'paused' class from previous face
+        if (currentFace) {
+          currentFace.classList.remove("current");
+          currentFace.classList.remove("playing");
+          currentFace.classList.remove("paused");
+        }
+
+        // Add 'current' and 'playing' class to the clicked face
+        face.classList.add("current");
+        face.classList.add("playing");
+
+        // Update our tracking variables
+        currentSrc = src;
+        currentFace = face;
       }
     });
   });
