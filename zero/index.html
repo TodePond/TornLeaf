@@ -56,12 +56,17 @@
     background-color: transparent;
     padding: 0;
     cursor: pointer;
-    transition: transform 0.1s, box-shadow 0.1s;
+    transition: transform 0.1s;
   }
 
   .face img {
-    border: 4px solid white;
+    border: 5px solid white;
     background: none;
+    outline: 0px solid #4680ff;
+    border-radius: 0px;
+    transition: transform 0.1s, outline 0.1s, border-radius 0.1s,
+      outline-color 0.1s;
+    outline-color: transparent;
   }
 
   .face:focus {
@@ -70,15 +75,26 @@
   }
 
   .face.playing img {
-    outline: 2px solid #4680ff;
+    outline: 2px solid;
+    outline-color: #4680ff;
     outline-offset: 2px;
     border-radius: 2px;
   }
 
   .face:focus img {
-    outline: 5px solid #4680ff;
+    outline: 5px solid;
     outline-offset: 2px;
+    outline-color: #4680ff;
     border-radius: 2px;
+  }
+  .face:hover:focus img {
+    outline: 5px solid;
+    outline-color: #4680ff;
+  }
+
+  .face.playing:focus img {
+    outline: 5px solid;
+    outline-color: #4680ff;
   }
 
   .face:hover {
@@ -97,7 +113,16 @@
     animation-play-state: paused;
   }
 
-  /* gradually increase and decrease scale */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+    }
+
+    .face.current img {
+      animation: none;
+    }
+  }
+
   @keyframes hover {
     0% {
       transform: scale(1);
@@ -157,6 +182,13 @@
       color: black;
       background-color: #46ff80;
       outline: 1px solid #46ff80;
+    }
+
+    /* focused AND hovered */
+    .torn-leaf-zero a:focus:hover {
+      color: black;
+      background-color: #46ff80;
+      outline: 4px solid #4680ff;
     }
 
     .torn-leaf-zero h1 {
@@ -299,12 +331,12 @@
         >’</span
       >t know what types of things would get submitted, or if there would be any
       submissions at all. Thankfully, I feel fortunate enough to say that lots
-      of wonderful people sent in their creations, and they were all so lovely
-      that I felt a lot of pressure in doing them justice. I hope you enjoy
-      browsing them below.
+      of wonderful people sent in their creations. They were all so lovely that
+      I felt a lot of pressure to do them justice. I hope you enjoy browsing
+      them below.
     </p>
     <p>
-      I encourage you to go slow. Take your time, listen to or read what people
+      I encourage you to go slow. Take your time, read or listen to what people
       have to say along the way. If you leave this website and come back another
       time, it <em>should</em> remember where you were so that you can carry on
       from there.
@@ -515,7 +547,7 @@
   <p>by Zhenya Shur</p>
 </article>
 
-<script>
+<script type="module">
   const player = document.getElementById("player");
   const faces = document.querySelectorAll(".face");
 
@@ -589,5 +621,33 @@
         currentFace = face;
       }
     });
+  });
+</script>
+
+<script type="module">
+  // Let's store the current scroll position in localStorage
+  // and restore it when the page loads
+
+  const SCROLL_KEY = "scrollPosition";
+
+  window.addEventListener("beforeunload", () => {
+    localStorage.setItem(SCROLL_KEY, window.scrollY);
+  });
+
+  window.addEventListener("load", () => {
+    const scrollY = localStorage.getItem(SCROLL_KEY);
+    if (scrollY === null) {
+      // If there's no scroll position stored, do nothing
+      return;
+    }
+    const scrollYInt = parseFloat(scrollY, 10);
+    // If the stored scroll position is not a number, do nothing
+    if (isNaN(scrollYInt)) {
+      return;
+    }
+    // Scroll to the stored position
+    if (scrollY) {
+      window.scrollTo(0, scrollYInt);
+    }
   });
 </script>
