@@ -70,15 +70,10 @@
     background: none;
     outline: 0px solid #4680ff;
     border-radius: 0px;
-    transition: transform 0.1s, outline 0.1s, border-radius 0.1s,
-      outline-color 0.1s;
+    transition: outline 0.1s, border-radius 0.1s, outline-color 0.1s,
+      transform 0.1s;
     outline-color: transparent;
     position: relative;
-  }
-
-  .face:focus {
-    transform: scale(1.025);
-    outline: none;
   }
 
   .face:focus div {
@@ -120,16 +115,21 @@
     padding-top: 2px;
   }
 
+  .face:focus {
+    transform: scale(1.01);
+    outline: none;
+  }
+
   .face:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 
   .face:active {
-    transform: scale(1);
+    /* transform: scale(1); */
   }
 
   .face.current div {
-    animation: hover 5s infinite;
+    /* animation: hover 5s infinite; */
   }
 
   .face.current.paused div {
@@ -420,6 +420,16 @@
   </main>
 </article>
 
+<article class="leaf-falls-silently">
+  <style>
+    .leaf-falls-silently {
+      background-color: lightblue;
+    }
+  </style>
+  <h1>a leaf falls silently but my voice can be heard</h1>
+  <span>by Artemiy Fedorov</span>
+</article>
+
 <article class="torn-leaf-zero-opening">
   <style>
     .torn-leaf-zero-opening {
@@ -461,9 +471,18 @@
     }
   </style>
 
-  <span style="max-width: 250px; padding-bottom: 30px">
+  <span
+    style="
+      max-width: 100%;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 30px;
+      flex-grow: 1;
+      position: relative;
+    ">
     <button
       class="face"
+      style="max-width: 250px"
       data-src="/zero/full-submissions/lu-wilson-gallery-opening/placeholder-recording.mp3">
       <div style="border-width: 2px">
         <img
@@ -471,14 +490,34 @@
           style="width: 100%; filter: grayscale(1); opacity: 0.75" />
       </div>
     </button>
+    <aside
+      style="
+        position: absolute;
+        left: calc(50% + 130px);
+        top: 70%;
+        font-size: 1.1em;
+        transform: rotate(10deg);
+        display: flex;
+        flex-direction: row;
+      ">
+      <img
+        src="/zero/full-submissions/lu-wilson-torn-leaf-zero/arrow.png"
+        width="50"
+        style="
+          transform: rotate(0deg) scaleX(-1) translateY(-12px);
+          filter: invert(1);
+        " />
+      Click!
+    </aside>
   </span>
+  <!-- Place this on the right of the image without moving the image off-center -->
 
-  <h1>GALLERY OPENING</h1>
-  <p>by LU WILSON</p>
+  <h1 style="text-align: center">GALLERY OPENING</h1>
+  <p style="text-align: center">by LU WILSON</p>
   <p style="padding-bottom: 50px">
     I made this gallery opening as an homage or parody of the kinds of videos
-    that <em>real</em> galleries put out.I hope it introduces you to the
-    gallery.
+    that <em>real</em> galleries put out. I hope it helps to set the tone for
+    Torn Leaf Zero.
   </p>
 
   <div
@@ -495,7 +534,7 @@
     Video goes here
   </div>
 
-  <p style="padding-top: 100px">GALLERY OPENING SCRIPT</p>
+  <p style="padding-top: 100px; text-align: center">GALLERY OPENING SCRIPT</p>
 
   <pre
     style="
@@ -551,16 +590,6 @@ Where you...
   </style>
   <h1>The Torn Leaf Logo</h1>
   <p>by Everybody</p>
-</article>
-
-<article class="leaf-falls-silently">
-  <style>
-    .leaf-falls-silently {
-      background-color: lightblue;
-    }
-  </style>
-  <h1>a leaf falls silently but my voice can be heard</h1>
-  <span>by Artemiy Fedorov</span>
 </article>
 
 <article class="where-do-children">
