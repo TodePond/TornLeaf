@@ -12,6 +12,7 @@
 <meta name="twitter:title" content="Torn leaf gallery" />
 <meta name="twitter:description" content="" />
 <meta name="twitter:image" content="https://todepond.com/gallery/og.png" />
+<script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
 
 <!-- <link rel="stylesheet" href="/style.css" /> -->
 
@@ -26,6 +27,50 @@
       rgba(20, 200, 120, 1) 90%,
       rgb(31, 39, 54, 1) 100%
     );
+  }
+
+  .playable button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.5em;
+
+    font-family: "Lipro";
+    font-size: 1.5em;
+    color: white;
+    background: none;
+    border: none;
+    font-weight: bold;
+    transition: font-size 0.1s, outline-width 0.1s;
+
+    text-shadow: 0px 2px 0px black;
+    outline-offset: 4px;
+    border-radius: 0px;
+    outline: 0px solid #4680ff;
+  }
+
+  .playable button:focus {
+    outline: 3px solid #4680ff;
+  }
+
+  .playable button:hover {
+    font-size: 1.7em;
+    /* color: white; */
+  }
+
+  .playable button:active {
+    font-size: 1.5em;
+  }
+
+  .playable.playing button {
+    color: transparent;
+    text-shadow: none;
   }
 
   * {
@@ -940,6 +985,8 @@
     }
   </style>
   <div
+    class="playable"
+    id="leaf-falls-silently"
     style="
       position: relative;
       aspect-ratio: 9 / 16;
@@ -948,13 +995,15 @@
       margin-bottom: 220px;
       margin-top: 600px;
       border: 2px solid black;
+      background-color: black;
     ">
     <!-- loading="lazy" -->
+    <button style="outline-color: black">Click to play</button>
     <iframe
-      src="https://customer-8ipv6zgcdbvqngke.cloudflarestream.com/4e2385158128a890f8ae85fa917b870b/iframe?preload=true&poster=https%3A%2F%2Fcustomer-8ipv6zgcdbvqngke.cloudflarestream.com%2F4e2385158128a890f8ae85fa917b870b%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=true"
+      src="https://customer-8ipv6zgcdbvqngke.cloudflarestream.com/4e2385158128a890f8ae85fa917b870b/iframe?preload=true&poster=https%3A%2F%2Fcustomer-8ipv6zgcdbvqngke.cloudflarestream.com%2F4e2385158128a890f8ae85fa917b870b%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false"
       style="border: none; height: 100%; width: 100%"
       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-      allowfullscreen="true"></iframe>
+      allowfullscreen="false"></iframe>
   </div>
   <p style="text-align: center; margin-bottom: 200px">
     <img
@@ -984,8 +1033,10 @@
             width: 100%;
             opacity: 1;
             border-color: black;
-            border-width: 2px;
+            border-width: 3px;
             background-color: black;
+            outline-color: black;
+            border-radius: 0px;
           " />
       </div>
     </button>
@@ -1335,77 +1386,129 @@ Where you...
   const player = document.getElementById("player");
   const faces = document.querySelectorAll(".face");
 
-  let currentSrc = null;
+  let playingFace = null;
   let currentFace = null;
 
   player.addEventListener("ended", () => {
-    // When the audio ends, remove 'current' and 'playing' classes from the current face
     if (currentFace) {
-      currentFace.classList.remove("current");
       currentFace.classList.remove("playing");
       currentFace.classList.remove("paused");
+      playingFace = null;
+      currentFace = null;
     }
-    currentSrc = null;
-    currentFace = null;
+
+    updatePlayablesVolume();
   });
 
   player.addEventListener("pause", () => {
-    // When the audio is paused, remove 'playing' class from the current face
     if (currentFace) {
       currentFace.classList.remove("playing");
       currentFace.classList.add("paused");
+      playingFace = null;
     }
+
+    updatePlayablesVolume();
   });
 
   player.addEventListener("play", () => {
-    // When the audio is played, add 'playing' class to the current face
     if (currentFace) {
       currentFace.classList.remove("paused");
       currentFace.classList.add("playing");
+      playingFace = currentFace;
     }
+
+    updatePlayablesVolume();
   });
 
   faces.forEach((face) => {
     face.addEventListener("click", () => {
-      const src = face.getAttribute("data-src");
+      const isNewFace = currentFace !== face;
 
-      // If the src is already set, play/pause it
-      if (currentSrc === src) {
-        if (player.paused) {
-          player.play();
-
-          // Remove 'paused' class from the clicked face and add 'playing'
-          face.classList.remove("paused");
-          face.classList.add("playing");
-        } else {
-          player.pause();
-
-          // Remove 'playing' class from the clicked face and add 'paused'
-          face.classList.remove("playing");
-          face.classList.add("paused");
-        }
-      } else {
-        // If it's a new src, change it and play
-        player.src = src;
-        player.play();
-
-        // Remove 'current' and 'playing' and 'paused' class from previous face
+      if (isNewFace) {
         if (currentFace) {
           currentFace.classList.remove("current");
-          currentFace.classList.remove("playing");
-          currentFace.classList.remove("paused");
+          player.pause();
         }
 
-        // Add 'current' and 'playing' class to the clicked face
-        face.classList.add("current");
-        face.classList.add("playing");
-
-        // Update our tracking variables
-        currentSrc = src;
         currentFace = face;
+        face.classList.add("current");
+
+        const src = face.getAttribute("data-src");
+        player.src = src;
+        player.play();
+      } else {
+        if (player.paused) {
+          player.play();
+        } else {
+          player.pause();
+        }
       }
     });
   });
+
+  const playables = document.querySelectorAll(".playable");
+
+  const playingPlayables = new Set();
+  const playersById = new Map();
+
+  for (const playable of playables) {
+    const iframe = playable.querySelector("iframe");
+    const player = Stream(iframe);
+    playersById.set(playable.id, player);
+
+    const button = playable.querySelector("button");
+    button.addEventListener("click", () => {
+      if (player.paused) {
+        player.play();
+      } else {
+        player.pause();
+      }
+    });
+
+    player.addEventListener("play", () => {
+      playable.classList.add("playing");
+      playingPlayables.add(playable);
+    });
+
+    player.addEventListener("pause", () => {
+      playable.classList.remove("playing");
+      playingPlayables.delete(playable);
+    });
+
+    player.addEventListener("ended", () => {
+      playable.classList.remove("playing");
+      playingPlayables.delete(playable);
+    });
+  }
+
+  window.addEventListener("scroll", () => {
+    updatePlayablesVolume();
+  });
+
+  function updatePlayablesVolume() {
+    for (const playable of playingPlayables) {
+      updateVolume(playable);
+    }
+  }
+
+  function updateVolume(playable) {
+    const midY = playable.offsetTop + playable.offsetHeight / 2;
+    const scrollMidY = window.scrollY + window.innerHeight / 2;
+    const distance = Math.abs(midY - scrollMidY);
+
+    let volume = 1 - distance / 1500;
+
+    if (playingFace) {
+      volume = Math.min(volume, 0.4);
+    }
+
+    const player = playersById.get(playable.id);
+    if (volume <= 0) {
+      player.volume = 0;
+      return;
+    }
+    player.volume = volume;
+  }
 </script>
 
 <script type="module">
