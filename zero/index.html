@@ -261,7 +261,10 @@
     <h1 style="margin-bottom: -5px">Torn Leaf Zero</h1>
     <span style="font-size: small">curated by Lu Wilson</span>
 
-    <p>Welcome to Torn Leaf Zero — the gallery's first exhibition.</p>
+    <p>
+      Welcome to Torn Leaf Zero — the gallery<span class="apostrophe">’</span>s
+      first exhibition.
+    </p>
     <hgroup class="mobile" style="display: flex; justify-content: center">
       <p
         style="
@@ -392,6 +395,8 @@
         justify-content: center;
         flex-direction: column;
         gap: 0px;
+        position: relative;
+        z-index: 10;
       ">
       <p style="text-align: center">To the next room</p>
       <img
@@ -426,7 +431,7 @@
         gap: 0px;
         top: 2400px;
       ">
-      <p style="text-align: center">Slowly</p>
+      <p style="text-align: center">Go slowly</p>
     </hgroup>
 
     <hgroup
@@ -441,6 +446,20 @@
       ">
       <p style="text-align: center">Slow</p>
     </hgroup>
+
+    <hgroup
+      style="
+        width: 100%;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0px;
+        top: 11600px;
+        color: black;
+      ">
+      <p style="text-align: center">Slow</p>
+    </hgroup>
   </main>
 </article>
 <header
@@ -448,15 +467,17 @@
     background: linear-gradient(
       to bottom,
       rgb(31, 39, 54, 1) 0%,
-      rgba(140, 50, 90, 1) 50%,
-      rgba(180, 240, 255, 1) 100%
+      rgba(140, 50, 90, 1) 40%,
+      rgba(180, 240, 255, 1) 85%,
+      white 100%
     );
-    padding-top: 9000px;
+    padding-top: 14000px;
+    margin-top: -400px;
   "></header>
 <article class="leaf-falls-silently" style="">
   <style>
     .leaf-falls-silently {
-      background-color: rgb(180, 240, 255);
+      background-color: white;
       font-family: "Lipro";
       color: black;
     }
