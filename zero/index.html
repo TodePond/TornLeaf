@@ -1483,12 +1483,27 @@ Where you...
 
   window.addEventListener("scroll", () => {
     updatePlayablesVolume();
+    updateFaceVolume();
   });
 
   function updatePlayablesVolume() {
     for (const playable of playingPlayables) {
       updateVolume(playable);
     }
+  }
+
+  function updateFaceVolume() {
+    if (!currentFace) {
+      return;
+    }
+
+    const midY = currentFace.offsetTop + currentFace.offsetHeight / 2;
+    const scrollMidY = window.scrollY + window.innerHeight / 2;
+    const distance = Math.abs(midY - scrollMidY);
+
+    let volume = 1 - distance / 1500;
+    volume = Math.max(volume, 0);
+    player.volume = volume;
   }
 
   function updateVolume(playable) {
@@ -1503,10 +1518,7 @@ Where you...
     }
 
     const player = playersById.get(playable.id);
-    if (volume <= 0) {
-      player.volume = 0;
-      return;
-    }
+    volume = Math.max(volume, 0);
     player.volume = volume;
   }
 </script>
