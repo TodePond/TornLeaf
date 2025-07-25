@@ -20,7 +20,7 @@
     --reverse-pathway: linear-gradient(
       to bottom,
       white 0%,
-      white 60%,
+      white 50%,
       rgba(200, 10, 10, 1) 70%,
       rgba(20, 100, 150, 1) 75%,
       rgba(20, 200, 120, 1) 90%,
@@ -80,7 +80,7 @@
   .face {
     border: none;
     height: fit-content;
-    background-color: transparent;
+    background-color: white;
     padding: 0;
     cursor: pointer;
     transition: transform 0.1s;
@@ -945,41 +945,65 @@
       aspect-ratio: 9 / 16;
       max-height: 90vh;
       margin: auto;
-      margin-bottom: 400px;
+      margin-bottom: 220px;
       margin-top: 600px;
+      border: 2px solid black;
     ">
+    <!-- loading="lazy" -->
     <iframe
       src="https://customer-8ipv6zgcdbvqngke.cloudflarestream.com/4e2385158128a890f8ae85fa917b870b/iframe?preload=true&poster=https%3A%2F%2Fcustomer-8ipv6zgcdbvqngke.cloudflarestream.com%2F4e2385158128a890f8ae85fa917b870b%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=true"
-      loading="lazy"
       style="border: none; height: 100%; width: 100%"
       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
       allowfullscreen="true"></iframe>
   </div>
-  <hgroup
+  <p style="text-align: center; margin-bottom: 200px">
+    <img
+      src="/zero/full-submissions/leaf-falls-silently/tleaf.png"
+      style="width: 150px" />
+  </p>
+  <vgroup
     style="
       display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 20px;
-      align-items: end;
       width: 100%;
-      justify-content: space-between;
+      justify-content: center;
       /* max-width: 1000px; */
       margin: auto;
+      padding-bottom: 200px;
     ">
-    <span>
+    <button
+      class="face"
+      style="max-width: 250px"
+      data-src="/zero/full-submissions/leaf-falls-silently/voicememo.mp3">
+      <div style="border-width: 2px">
+        <img
+          src="/zero/full-submissions/leaf-falls-silently/myface.jpg"
+          style="
+            width: 100%;
+            opacity: 1;
+            border-color: black;
+            border-width: 2px;
+            background-color: black;
+          " />
+      </div>
+    </button>
+    <span style="text-align: center">
       <h1>a leaf falls silently but my voice can be heard</h1>
       <p>by Artemiy Fedorov</p>
     </span>
-    <button
-      class="face"
-      style="max-width: 250px; margin-bottom: 0px; padding: 0; border-width: 0"
-      data-src="/zero/full-submissions/lu-wilson-gallery-opening/placeholder-recording.mp3">
-      <div style="border-width: 2px">
-        <img
-          src="/zero/full-submissions/lu-wilson-torn-leaf-zero/torn-leaf-zero.jpeg"
-          style="width: 100%; filter: grayscale(1); opacity: 0.75" />
-      </div>
-    </button>
-  </hgroup>
+  </vgroup>
+</article>
+
+<article class="where-do-children">
+  <style>
+    .where-do-children {
+      background-color: bisque;
+    }
+  </style>
+  <h1>Where do children come from?</h1>
+  <p>by Zhenya Shur</p>
 </article>
 
 <article class="torn-leaf-zero-opening">
@@ -1142,16 +1166,6 @@ Where you...
   </style>
   <h1>The Torn Leaf Logo</h1>
   <p>by Everybody</p>
-</article>
-
-<article class="where-do-children">
-  <style>
-    .where-do-children {
-      background-color: bisque;
-    }
-  </style>
-  <h1>Where do children come from?</h1>
-  <p>by Zhenya Shur</p>
 </article>
 
 <article class="be-delicious">
