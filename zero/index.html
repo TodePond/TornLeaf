@@ -182,9 +182,14 @@
     /* animation-play-state: paused; */
   }
 
+  * {
+    scroll-behavior: smooth;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * {
       transition: none !important;
+      scroll-behavior: auto;
     }
 
     .face.current img {
@@ -231,6 +236,36 @@
     text-shadow: 2px 2px 0px black, -2px 2px 0px black, 2px -2px 0px black,
       -2px -2px 0px black;
     box-shadow: 0px 0px 10px black;
+  }
+
+  .signpost {
+    background: none;
+    border: none;
+    pointer-events: none;
+    transition: transform 0.1s ease-in-out, outline 0.1s ease-in-out;
+    transform: scale(1);
+    outline: 0px solid #4680ff;
+    outline-width: 0px;
+    border-radius: 10px;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    text-decoration: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    padding: 0px 20px;
+  }
+
+  .signpost:focus {
+    pointer-events: auto;
+    cursor: pointer;
+    outline-width: 3px;
+  }
+
+  .signpost:hover {
+    transform: scale(1.1);
   }
 </style>
 
@@ -474,9 +509,11 @@
         z-index: 10;
       ">
       <p style="text-align: center">To the next room</p>
-      <img
-        src="/zero/full-submissions/lu-wilson-torn-leaf-zero/downarrow.png"
-        width="80" />
+      <button class="signpost">
+        <img
+          src="/zero/full-submissions/lu-wilson-torn-leaf-zero/downarrow.png"
+          width="80" />
+      </button>
     </hgroup>
 
     <hgroup
@@ -490,10 +527,12 @@
         top: 1200px;
       ">
       <p style="text-align: center">This way</p>
-      <img
-        src="/zero/full-submissions/lu-wilson-torn-leaf-zero/downarrow.png"
-        width="80"
-        style="transform: scaleX(-1)" />
+      <button class="signpost">
+        <img
+          src="/zero/full-submissions/lu-wilson-torn-leaf-zero/downarrow.png"
+          width="80"
+          style="transform: scaleX(-1)" />
+      </button>
     </hgroup>
 
     <hgroup
@@ -506,7 +545,9 @@
         gap: 0px;
         top: 2400px;
       ">
-      <p style="text-align: center">Go slow</p>
+      <button class="signpost">
+        <p style="text-align: center">Go slow</p>
+      </button>
     </hgroup>
 
     <hgroup
@@ -519,7 +560,9 @@
         gap: 0px;
         top: 3600px;
       ">
-      <p style="text-align: center">Slow</p>
+      <button class="signpost">
+        <p style="text-align: center">Slow</p>
+      </button>
     </hgroup>
 
     <hgroup
@@ -533,7 +576,9 @@
         top: 10600px;
         color: black;
       ">
-      <p style="text-align: center">Slow</p>
+      <button class="signpost">
+        <p style="text-align: center">Slow</p>
+      </button>
     </hgroup>
   </main>
 </article>
@@ -1118,9 +1163,6 @@
     </button>
     <aside
       style="
-        position: absolute;
-        left: calc(50% + 130px);
-        top: 70%;
         font-size: 1.1em;
         transform: rotate(10deg);
         display: flex;
@@ -1502,8 +1544,6 @@ Where you...
     const midY = currentFace.offsetTop + currentFace.offsetHeight / 2;
     const scrollMidY = window.scrollY + window.innerHeight / 2;
 
-    console.log("midY", midY);
-    console.log("scrollMidY", scrollMidY);
     const distance = Math.abs(midY - scrollMidY);
 
     let volume = 1 - distance / 1500;
@@ -1525,6 +1565,27 @@ Where you...
     const player = playersById.get(playable.id);
     volume = Math.max(volume, 0);
     player.volume = volume;
+  }
+
+  const signposts = document.querySelectorAll(".signpost");
+
+  signposts.forEach((signpost) => {
+    signpost.addEventListener("click", () => {
+      focusNextElement();
+    });
+  });
+
+  function focusNextElement() {
+    const focussableElements = document.querySelectorAll(
+      "button:not([disabled]), a:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])"
+    );
+
+    const currentIndex = Array.from(focussableElements).indexOf(
+      document.activeElement
+    );
+
+    const nextIndex = (currentIndex + 1) % focussableElements.length;
+    focussableElements[nextIndex].focus();
   }
 </script>
 
