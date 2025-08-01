@@ -116,7 +116,7 @@
   }
 
   @media (min-width: 600px) {
-    .mobile {
+    .phone {
       display: none !important;
     }
   }
@@ -183,7 +183,7 @@
   }
 
   * {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -266,6 +266,10 @@
 
   .signpost:hover {
     transform: scale(1.1);
+  }
+
+  .extra.playing {
+    opacity: 0 !important;
   }
 </style>
 
@@ -375,7 +379,7 @@
       Welcome to Torn Leaf Zero — the gallery<span class="apostrophe">’</span>s
       first exhibition.
     </p>
-    <hgroup class="mobile" style="display: flex; justify-content: center">
+    <hgroup class="phone" style="display: flex; justify-content: center">
       <p
         style="
           transform: rotate(-10deg);
@@ -383,10 +387,11 @@
           white-space: nowrap;
           margin: 10px;
         ">
-        <!-- no word wrap -->
-        <span class="" style="white-space: nowrap">Click me!</span>
-        <!-- >Click me!</span -->
-        <!-- > -->
+        <span
+          style="white-space: nowrap"
+          data-src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3">
+          Click me!
+        </span>
         <br />
         <img
           width="50"
@@ -405,13 +410,18 @@
       ">
       <p
         class="tablet"
+        data-src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3"
         style="
           transform: rotate(-10deg);
           text-align: right;
           white-space: nowrap;
         ">
         <!-- no word wrap -->
-        <span class="" style="white-space: nowrap">Click me!</span>
+        <span
+          style="white-space: nowrap"
+          data-src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3">
+          Click me!
+        </span>
         <img
           width="50"
           style="transform: rotate(10deg)"
@@ -427,13 +437,16 @@
       </button>
       <p
         class="tablet"
+        data-src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3"
         style="
           transform: rotate(20deg) translateX(-2px);
           font-size: medium;
           min-width: 200px;
           position: relative;
         ">
-        <span>(click on any person's face to hear them talk)</span>
+        <span class="guide-1"
+          >(click on any person's face to hear them talk)</span
+        >
         <br />
         <img
           width="60"
@@ -443,7 +456,7 @@
     </hgroup>
 
     <hgroup
-      class="mobile"
+      class="phone"
       style="
         display: flex;
         width: 100%;
@@ -451,6 +464,8 @@
         align-items: end;
       ">
       <p
+        class="extra"
+        data-src="/zero/full-submissions/lu-wilson-torn-leaf-zero/placeholder-recording.mp3"
         style="
           font-size: medium;
           transform: rotate(2deg);
@@ -469,8 +484,8 @@
           "
           src="/zero/full-submissions/lu-wilson-torn-leaf-zero/arrow2.png" />
         <br /><br />
-        <span style="text-align: left"
-          >(click on any person's face to hear them talk)</span
+        <span style="text-align: left" class="guide-1">
+          (click on any person's face to hear them talk)</span
         >
       </p>
     </hgroup>
@@ -1009,6 +1024,7 @@
     "></span>
 </aside>
 <header
+  id="pathway-header"
   style="
     background: linear-gradient(
       to bottom,
@@ -1055,6 +1071,7 @@
       src="/zero/full-submissions/leaf-falls-silently/tleaf.png"
       style="width: 150px" />
   </p>
+
   <vgroup
     style="
       display: flex;
@@ -1063,28 +1080,75 @@
       gap: 20px;
       width: 100%;
       justify-content: center;
-      /* max-width: 1000px; */
       margin: auto;
       padding-bottom: 200px;
     ">
-    <button
-      class="face"
-      style="max-width: 250px"
-      data-src="/zero/full-submissions/leaf-falls-silently/voicememo.mp3">
-      <div style="border-width: 2px">
+    <div style="position: relative">
+      <aside
+        class="tablet"
+        style="
+          font-size: 1.1em;
+          transform: rotate(10deg);
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          left: 270px;
+          top: 100px;
+          gap: 10px;
+        ">
+        <span style="transform: rotate(10deg) translateX(10px) translateY(-8px)"
+          >Click!</span
+        >
         <img
-          src="/zero/full-submissions/leaf-falls-silently/myface.jpg"
+          src="/zero/full-submissions/lu-wilson-torn-leaf-zero/arrow.png"
+          width="50"
           style="
-            width: 100%;
-            opacity: 1;
-            border-color: black;
-            border-width: 3px;
-            background-color: black;
-            outline-color: black;
-            border-radius: 0px;
+            transform: rotate(-70deg) scaleX(-1) translateY(-16px);
+            filter: invert(1);
           " />
-      </div>
-    </button>
+      </aside>
+      <aside
+        class="phone"
+        style="
+          font-size: 1.1em;
+          transform: rotate(10deg);
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          left: 80px;
+          top: -80px;
+          gap: 10px;
+        ">
+        <span style="transform: rotate(-4deg) translateX(14px) translateY(-4px)"
+          >Click!</span
+        >
+        <img
+          src="/zero/full-submissions/lu-wilson-torn-leaf-zero/arrow.png"
+          width="50"
+          style="
+            transform: rotate(100deg) scaleX(1) translateY(-16px);
+            filter: invert(1);
+          " />
+      </aside>
+      <button
+        class="face"
+        style="max-width: 250px"
+        data-src="/zero/full-submissions/leaf-falls-silently/voicememo.mp3">
+        <div style="border-width: 2px">
+          <img
+            src="/zero/full-submissions/leaf-falls-silently/myface.jpg"
+            style="
+              width: 100%;
+              opacity: 1;
+              border-color: black;
+              border-width: 3px;
+              background-color: black;
+              outline-color: black;
+              border-radius: 0px;
+            " />
+        </div>
+      </button>
+    </div>
     <span style="text-align: center">
       <h1>a leaf falls silently but my voice can be heard</h1>
       <p>by Artemiy Fedorov</p>
@@ -1426,16 +1490,27 @@ Where you...
 <script type="module">
   const player = document.getElementById("player");
   const faces = document.querySelectorAll(".face");
+  const extras = document.querySelectorAll(".extra");
 
   let playingFace = null;
   let currentFace = null;
+  let currentSrc = null;
 
   player.addEventListener("ended", () => {
     if (currentFace) {
       currentFace.classList.remove("playing");
       currentFace.classList.remove("paused");
+
+      extras.forEach((extra) => {
+        const src = extra.getAttribute("data-src");
+        if (src === currentSrc) {
+          extra.classList.remove("playing");
+        }
+      });
+
       playingFace = null;
       currentFace = null;
+      currentSrc = null;
     }
 
     updatePlayablesVolume();
@@ -1445,6 +1520,13 @@ Where you...
     if (currentFace) {
       currentFace.classList.remove("playing");
       currentFace.classList.add("paused");
+      extras.forEach((extra) => {
+        const src = extra.getAttribute("data-src");
+        if (src === currentSrc) {
+          extra.classList.remove("playing");
+        }
+      });
+
       playingFace = null;
     }
 
@@ -1455,6 +1537,13 @@ Where you...
     if (currentFace) {
       currentFace.classList.remove("paused");
       currentFace.classList.add("playing");
+      extras.forEach((extra) => {
+        const src = extra.getAttribute("data-src");
+        if (src === currentSrc) {
+          extra.classList.add("playing");
+        }
+      });
+
       playingFace = currentFace;
     }
 
@@ -1472,9 +1561,11 @@ Where you...
         }
 
         currentFace = face;
+
         face.classList.add("current");
 
         const src = face.getAttribute("data-src");
+        currentSrc = src;
         player.src = src;
         player.play();
       } else {
@@ -1511,6 +1602,7 @@ Where you...
 
     player.addEventListener("play", () => {
       playable.classList.add("playing");
+      scrollIntoView(playable);
       playingPlayables.add(playable);
     });
 
@@ -1541,29 +1633,50 @@ Where you...
       return;
     }
 
-    const midY = currentFace.offsetTop + currentFace.offsetHeight / 2;
-    const scrollMidY = window.scrollY + window.innerHeight / 2;
+    const boundingRect = currentFace.getBoundingClientRect();
+    const topY = boundingRect.top;
+    const bottomY = boundingRect.bottom;
 
-    const distance = Math.abs(midY - scrollMidY);
+    const distanceOutsideOfScreenAtTop = Math.abs(Math.min(0, topY));
+    const distanceOutsideOfScreenAtBottom = Math.max(
+      0,
+      Math.abs(Math.max(0, bottomY - window.innerHeight))
+    );
 
-    let volume = 1 - distance / 1500;
+    const distanceOutsideOfScreen = Math.max(
+      distanceOutsideOfScreenAtTop,
+      distanceOutsideOfScreenAtBottom
+    );
+
+    let volume = 1 - distanceOutsideOfScreen / 2000;
     volume = Math.max(volume, 0);
     player.volume = volume;
   }
 
   function updateVolume(playable) {
-    const midY = playable.offsetTop + playable.offsetHeight / 2;
-    const scrollMidY = window.scrollY + window.innerHeight / 2;
-    const distance = Math.abs(midY - scrollMidY);
+    const boundingRect = playable.getBoundingClientRect();
+    const topY = boundingRect.top;
+    const bottomY = boundingRect.bottom;
 
-    let volume = 1 - distance / 1500;
+    const distanceOutsideOfScreenAtTop = Math.abs(Math.min(0, topY));
+    const distanceOutsideOfScreenAtBottom = Math.max(
+      0,
+      Math.abs(Math.max(0, bottomY - window.innerHeight))
+    );
+
+    const distanceOutsideOfScreen = Math.max(
+      distanceOutsideOfScreenAtTop,
+      distanceOutsideOfScreenAtBottom
+    );
+
+    let volume = 1 - distanceOutsideOfScreen / 2000;
+    volume = Math.max(volume, 0);
 
     if (playingFace) {
-      volume = Math.min(volume, 0.4);
+      volume = Math.min(volume, 0.3);
     }
 
     const player = playersById.get(playable.id);
-    volume = Math.max(volume, 0);
     player.volume = volume;
   }
 
@@ -1587,13 +1700,19 @@ Where you...
     const nextIndex = (currentIndex + 1) % focussableElements.length;
     focussableElements[nextIndex].focus();
   }
-</script>
 
-<script type="module">
+  function scrollIntoView(element) {
+    element.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
   // Let's store the current scroll position in localStorage
   // and restore it when the page loads
 
   const SCROLL_KEY = "scrollPosition";
+
+  const focusableElements = document.querySelectorAll(
+    "button:not([disabled]), a:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])"
+  );
 
   window.addEventListener("beforeunload", () => {
     localStorage.setItem(SCROLL_KEY, window.scrollY);
@@ -1612,7 +1731,56 @@ Where you...
     }
     // Scroll to the stored position
     if (scrollY) {
+      const html = document.querySelector("html");
+      html.style.scrollBehavior = "auto";
       window.scrollTo(0, scrollYInt);
+      html.style.scrollBehavior = "smooth";
+
+      setTabIndexViaPosition();
     }
+  });
+
+  function setTabIndexViaPosition() {
+    // Set current tab index to the next focusable element based on the scroll position
+    const focusableElementsAndTheirTopYs = Array.from(focusableElements).map(
+      (element) => {
+        const boundingRect = element.getBoundingClientRect();
+        return { element, topY: boundingRect.top };
+      }
+    );
+
+    // Unlocked checkpoints
+    const unlockedCheckpoints = focusableElementsAndTheirTopYs.filter(
+      (element) => element.topY < window.innerHeight
+    );
+
+    // Get the element that's furthest down the page, but not below the viewport
+    const furthestDownElement = unlockedCheckpoints.reduce(
+      (furthest, current) => {
+        return current.topY > furthest.topY ? current : furthest;
+      },
+      unlockedCheckpoints[0]
+    );
+
+    const indexOfFurthestDownElement = Array.from(focusableElements).indexOf(
+      furthestDownElement.element
+    );
+
+    // Is topY positive?
+    const isFurthestDownElementVisible =
+      furthestDownElement.element.getBoundingClientRect().bottom > 0;
+
+    const offset = isFurthestDownElementVisible ? 1 : 0;
+
+    const previousFocusableElement =
+      focusableElements[indexOfFurthestDownElement - offset];
+
+    previousFocusableElement?.focus({ preventScroll: true });
+    previousFocusableElement?.blur();
+  }
+
+  const pathwayHeader = document.getElementById("pathway-header");
+  pathwayHeader.addEventListener("click", () => {
+    setTabIndexViaPosition();
   });
 </script>
