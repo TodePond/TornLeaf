@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script
   data-goatcounter="https://tornleaf.goatcounter.com/count"
@@ -1002,6 +1001,7 @@
     <iframe
       src="https://customer-8ipv6zgcdbvqngke.cloudflarestream.com/4e2385158128a890f8ae85fa917b870b/iframe?preload=true&poster=https%3A%2F%2Fcustomer-8ipv6zgcdbvqngke.cloudflarestream.com%2F4e2385158128a890f8ae85fa917b870b%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false"
       style="border: none; height: 100%; width: 100%"
+      loading="lazy"
       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
       allowfullscreen="false"></iframe>
   </div>
@@ -1105,7 +1105,6 @@
       text-align: center;
       padding-bottom: 30px;
       flex-grow: 1;
-      position: relative;
     ">
     <button
       class="face"
@@ -1443,6 +1442,9 @@ Where you...
           player.pause();
         }
       }
+
+      updateFaceVolume();
+      updatePlayablesVolume();
     });
   });
 
@@ -1499,6 +1501,9 @@ Where you...
 
     const midY = currentFace.offsetTop + currentFace.offsetHeight / 2;
     const scrollMidY = window.scrollY + window.innerHeight / 2;
+
+    console.log("midY", midY);
+    console.log("scrollMidY", scrollMidY);
     const distance = Math.abs(midY - scrollMidY);
 
     let volume = 1 - distance / 1500;
