@@ -109,6 +109,12 @@
     src: url(/assets/impact.ttf);
   }
 
+  @media (max-width: 1023px) {
+    .desktop {
+      display: none !important;
+    }
+  }
+
   @media (max-width: 599px) {
     .tablet {
       display: none !important;
@@ -359,6 +365,7 @@
     .pathway {
       pointer-events: none;
       position: absolute;
+      image-rendering: pixelated;
     }
 
     /* .torn-leaf-zero main {
@@ -539,8 +546,9 @@
         justify-content: center;
         flex-direction: column;
         gap: 0px;
-        top: 1200px;
-      ">
+        top: 2100px;
+      "
+      class="">
       <p style="text-align: center">This way</p>
       <button class="signpost">
         <img
@@ -558,7 +566,7 @@
         justify-content: center;
         flex-direction: column;
         gap: 0px;
-        top: 2400px;
+        top: 3000px;
       ">
       <button class="signpost">
         <p style="text-align: center">Go slow</p>
@@ -573,7 +581,7 @@
         justify-content: center;
         flex-direction: column;
         gap: 0px;
-        top: 3600px;
+        top: 4200px;
       ">
       <button class="signpost">
         <p style="text-align: center">Slow</p>
@@ -600,32 +608,18 @@
 <aside style="position: relative">
   <!-- src="/zero/full-submissions/lu-wilson-torn-leaf-zero/path-placeholder.png" -->
   <span
+    src="/zero/full-submissions/lu-wilson-torn-leaf-zero/path-placeholder.png"
     class="pathway"
     style="
       top: 0px;
       right: 0px;
-      height: 1000px;
-      width: 100%;
-      background: var(--reverse-pathway);
-      background-size: 100% 14000px;
-      background-position: 0px 0px;
-      mask-image: url(/zero/full-submissions/lu-wilson-torn-leaf-zero/path-test-a.png);
-      mask-size: 1000px 1000px;
-      mask-repeat: no-repeat;
-      mask-position: right;
-    "></span>
-  <span
-    class="pathway"
-    style="
-      top: 1000px;
-      right: 0px;
-      height: 1000px;
+      height: 2000px;
       width: 100%;
       background: var(--reverse-pathway);
       background-size: 100% 14000px;
       background-position: 0px -2000px;
-      mask-image: url(/zero/full-submissions/lu-wilson-torn-leaf-zero/path-test-b.png);
-      mask-size: 1000px 1000px;
+      mask-image: url(/zero/full-submissions/lu-wilson-torn-leaf-zero/path-strand-0-right.png);
+      mask-size: 2000px 2000px;
       mask-repeat: no-repeat;
       mask-position: right;
     "></span>
@@ -639,14 +633,13 @@
       width: 100%;
       background: var(--reverse-pathway);
       background-size: 100% 14000px;
-      background-position: 0px -2000px;
+      background-position: 0px -3000px;
       mask-image: url(/zero/full-submissions/lu-wilson-torn-leaf-zero/path-placeholder.png);
       mask-size: 562.5px 1000px;
       mask-repeat: no-repeat;
       mask-position: right;
     "></span>
   <span
-    src="/zero/full-submissions/lu-wilson-torn-leaf-zero/path-placeholder.png"
     class="pathway"
     style="
       top: 3000px;
@@ -655,7 +648,7 @@
       width: 100%;
       background: var(--reverse-pathway);
       background-size: 100% 14000px;
-      background-position: 0px -3000px;
+      background-position: 0px 0px;
       mask-image: url(/zero/full-submissions/lu-wilson-torn-leaf-zero/path-placeholder.png);
       mask-size: 562.5px 1000px;
       mask-repeat: no-repeat;
@@ -827,33 +820,20 @@
       mask-position: right;
     "></span>
   <span
-    class="pathway"
+    class="pathway tablet"
     style="
       top: 0px;
-      left: 0px;
-      height: 1000px;
+      left: -100px;
+      height: 2000px;
       width: 100%;
       background: var(--reverse-pathway);
       background-size: 100% 14000px;
       background-position: 0px 0px;
-      mask-image: url(/zero/full-submissions/lu-wilson-torn-leaf-zero/path-test-c.png);
-      mask-size: 1000px 1000px;
+      mask-image: url(/zero/full-submissions/lu-wilson-torn-leaf-zero/path-strand-0-left.png);
+      mask-size: 2000px 2000px;
       mask-repeat: no-repeat;
     "></span>
-  <span
-    class="pathway"
-    style="
-      top: 1000px;
-      left: 0px;
-      height: 1000px;
-      width: 100%;
-      background: var(--reverse-pathway);
-      background-size: 100% 14000px;
-      background-position: 0px -1000px;
-      mask-image: url(/zero/full-submissions/lu-wilson-torn-leaf-zero/path-placeholder-left.png);
-      mask-size: 562.5px 1000px;
-      mask-repeat: no-repeat;
-    "></span>
+
   <span
     class="pathway"
     style="
