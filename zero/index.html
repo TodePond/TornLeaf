@@ -359,7 +359,7 @@
     }
 
     .apostrophe {
-      margin-right: -15px;
+      font-family: "Times New Roman", serif;
     }
 
     .pathway {
@@ -1058,11 +1058,34 @@
       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
       allowfullscreen="false"></iframe>
   </div>
-  <p style="text-align: center; margin-bottom: 200px">
+
+  <hgroup
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 200px 0;
+    ">
+    <button class="signpost">
+      <span style="text-align: center; max-width: 500px">
+        <h1>a leaf falls silently but my voice can be heard</h1>
+        <p>by Artemiy Fedorov</p>
+      </span>
+    </button>
+  </hgroup>
+
+  <hgroup
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 200px 0;
+    ">
     <img
       src="/zero/full-submissions/leaf-falls-silently/tleaf.png"
-      style="width: 150px" />
-  </p>
+      style="width: 150px"
+      alt="a torn leaf" />
+  </hgroup>
 
   <vgroup
     style="
@@ -1141,9 +1164,14 @@
         </div>
       </button>
     </div>
-    <span style="text-align: center">
-      <h1>a leaf falls silently but my voice can be heard</h1>
-      <p>by Artemiy Fedorov</p>
+    <span style="text-align: center; max-width: 500px">
+      <p style="text-align: justify; margin-top: 100px">
+        Hello my name is Artemiy Fedorov. My music piece is titled
+        <span class="apostrophe">“</span>a leaf falls silently but my voice can
+        be heard<span class="apostrophe">”</span>. It is a short piece of music
+        that contains various instruments and foley percussion and also features
+        my voice.
+      </p>
     </span>
   </vgroup>
 </article>
