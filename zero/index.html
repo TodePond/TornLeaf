@@ -28,6 +28,37 @@
     );
   }
 
+  .playable-captions {
+    border: none;
+    background: none;
+    font-size: 1.5em;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 100;
+    position: relative;
+    border-radius: 0px;
+    transition: outline-width 0.1s;
+    outline: 0px solid;
+    color: white;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 6px;
+  }
+
+  .playable-label.playing {
+    color: transparent;
+  }
+
+  .playable-captions.on {
+    color: black;
+    background-color: white;
+  }
+
+  .playable-captions:hover {
+    text-decoration: underline;
+  }
+
   .playable button {
     position: absolute;
     top: 0;
@@ -107,6 +138,46 @@
   @font-face {
     font-family: "Impact";
     src: url(/assets/impact.ttf);
+  }
+
+  @font-face {
+    font-family: "Baskervville-Bold";
+    src: url(/assets/Baskervville-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: "Baskervville-BoldItalic";
+    src: url(/assets/Baskervville-BoldItalic.ttf);
+  }
+
+  @font-face {
+    font-family: "Baskervville-Italic";
+    src: url(/assets/Baskervville-Italic.ttf);
+  }
+
+  @font-face {
+    font-family: "Baskervville-Medium";
+    src: url(/assets/Baskervville-Medium.ttf);
+  }
+
+  @font-face {
+    font-family: "Baskervville-MediumItalic";
+    src: url(/assets/Baskervville-MediumItalic.ttf);
+  }
+
+  @font-face {
+    font-family: "Baskervville-SemiBold";
+    src: url(/assets/Baskervville-SemiBold.ttf);
+  }
+
+  @font-face {
+    font-family: "Baskervville-SemiBoldItalic";
+    src: url(/assets/Baskervville-SemiBoldItalic.ttf);
+  }
+
+  @font-face {
+    font-family: "Baskervville-Regular";
+    src: url(/assets/Baskervville-Regular.ttf);
   }
 
   @media (max-width: 1023px) {
@@ -1220,7 +1291,7 @@
       font-family: "Lipro";
       color: #f3b872;
       padding: 0px;
-      box-shadow: 0px -10px 0px 0px #69577d;
+      box-shadow: 0px -10px 0px 0px #69577d, 0px 10px 0px 0px #a78cc5;
       position: relative;
     }
 
@@ -1344,7 +1415,7 @@
       style="
         max-width: 600px;
         text-align: justify;
-        font-size: 1.1em;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       ">
@@ -1361,7 +1432,7 @@
       style="
         max-width: 600px;
         text-align: justify;
-        font-size: 1.1em;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       ">
@@ -1375,7 +1446,7 @@
       style="
         max-width: 600px;
         text-align: justify;
-        font-size: 1.1em;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       ">
@@ -1391,7 +1462,7 @@
       style="
         max-width: 600px;
         text-align: justify;
-        font-size: 1.1em;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       ">
@@ -1406,7 +1477,7 @@
       style="
         max-width: 600px;
         text-align: justify;
-        font-size: 1.1em;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       ">
@@ -1421,7 +1492,7 @@
       style="
         max-width: 600px;
         text-align: justify;
-        font-size: 1.1em;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       ">
@@ -1434,7 +1505,7 @@
       style="
         max-width: 600px;
         text-align: justify;
-        font-size: 1.1em;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       ">
@@ -1454,7 +1525,7 @@
       style="
         max-width: 600px;
         text-align: justify;
-        font-size: 1.1em;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       ">
@@ -1467,6 +1538,230 @@
       style="width: 100vw; padding-top: 100px; padding-bottom: 0px"
       src="/zero/full-submissions/where-do-children/photo.jpg" />
   </hgroup>
+
+  <div
+    style="
+      display: inline-block;
+      position: absolute;
+      bottom: -10px;
+      height: 500px;
+      right: 0px;
+      width: 500px;
+      pointer-events: none;
+      z-index: 2;
+      background: #a78cc5;
+      -webkit-mask-image: url('/zero/full-submissions/where-do-children/mushhead.png');
+      mask-image: url('/zero/full-submissions/where-do-children/mushhead.png');
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-position: center right;
+      mask-position: center right;
+      transform: scaleY(-1);
+      transform-origin: bottom;
+    "></div>
+
+  <div
+    style="
+      display: inline-block;
+      position: absolute;
+      bottom: -10px;
+      height: 500px;
+      left: 0px;
+      width: 500px;
+      pointer-events: none;
+      z-index: 2;
+      background: #a78cc5;
+      -webkit-mask-image: url('/zero/full-submissions/where-do-children/leafhead.png');
+      mask-image: url('/zero/full-submissions/where-do-children/leafhead.png');
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-position: center left;
+      mask-position: center left;
+      transform: scaleY(-1);
+      transform-origin: bottom;
+    "></div>
+</article>
+
+<article class="be-delicious">
+  <style>
+    .be-delicious {
+      background-color: #101042;
+      color: #c6a9e7;
+      font-family: "Baskervville-Regular";
+      padding: 40px;
+      /* font-weight: semibold; */
+      /* font-style: italic; */
+      padding-top: 400px;
+      padding-bottom: 400px;
+    }
+
+    .be-delicious .transcript p {
+      margin-top: 55px;
+    }
+
+    .be-delicious .playable-captions {
+      color: #c6a9e7;
+    }
+
+    .be-delicious .playable-captions.on {
+      color: #101042;
+      background-color: #c6a9e7;
+    }
+
+    .be-delicious .playable {
+      transition: transform 0.1s;
+    }
+
+    .be-delicious .playable:not(.playing):hover {
+      transform: scale(1.01);
+    }
+  </style>
+
+  <span
+    class="playable-label"
+    data-playable-id="be-delicious"
+    style="
+      font-size: 20px;
+      margin-bottom: 10px;
+      display: block;
+      text-align: center;
+      width: 100%;
+    ">
+    v click to play v
+  </span>
+  <div
+    class="playable"
+    id="be-delicious"
+    data-up-offset="0"
+    data-down-offset="0"
+    style="
+      position: relative;
+      aspect-ratio: 16 / 9;
+      margin: auto;
+      max-height: 90vh;
+    ">
+    <button
+      style="
+        outline-color: #c6a9e7;
+        outline-offset: 2px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      ">
+      <span
+        style="
+          font-size: 1em;
+          text-align: center;
+          padding-top: 10px;
+          font-family: 'Baskervville-Regular';
+        ">
+        <!-- click to play -->
+      </span>
+    </button>
+    <iframe
+      src="https://customer-8ipv6zgcdbvqngke.cloudflarestream.com/802d68792933e4ad8a79531ede413599/iframe?preload=true&poster=https%3A%2F%2Fcustomer-8ipv6zgcdbvqngke.cloudflarestream.com%2F802d68792933e4ad8a79531ede413599%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false"
+      style="border: none; height: 100%; width: 100%; border: 2px solid black"
+      loading="lazy"
+      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+      allowfullscreen="false"></iframe>
+  </div>
+  <button
+    style="float: right; font-family: 'Baskervville-Bold'"
+    class="playable-captions"
+    data-playable-id="be-delicious">
+    [CC]
+  </button>
+
+  <section style="text-align: center; margin-top: 200px">
+    <!-- purple leaf image -->
+    <!-- Doing the same technique as above - using the same image as in the children section - as a mask -->
+    <hgroup
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #c6a9e7;
+        width: 100%;
+        height: 80px;
+        mask-image: url('/zero/full-submissions/be-delicious/leaf.png');
+        -webkit-mask-image: url('/zero/full-submissions/where-do-children/tleaft.png');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        margin-top: 15px;
+      "></hgroup>
+
+    <h1
+      style="
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-family: 'Baskervville-Bold';
+      ">
+      HOW TO BE DELICIOUS
+    </h1>
+    <p
+      style="
+        font-size: 18px;
+        margin-top: 0px;
+        font-family: 'Baskervville-Regular';
+      ">
+      by Alex Dytrych
+    </p>
+  </section>
+
+  <section
+    class="transcript"
+    style="
+      font-size: 20px;
+      line-height: 1.5;
+      text-align: justify;
+      max-width: 600px;
+      margin: auto;
+      margin-top: 100px;
+    ">
+    <p>
+      How to be delicious. Transcript goes here. Yes it does. How to be
+      delicious. Transcript goes here. Yes it does. How to be delicious.
+      Transcript goes here. Yes it does. How to be delicious. Transcript goes
+      here. Yes it does. How to be delicious. Transcript goes here. Yes it does.
+      How to be delicious. Transcript goes here. Yes it does. How to be
+      delicious. Transcript goes here. Yes it does. How to be delicious.
+      Transcript goes here. Yes it does.
+    </p>
+    <p>
+      How to be delicious. Transcript goes here. Yes it does. How to be
+      delicious. Transcript goes here. Yes it does. How to be delicious.
+      Transcript goes here. Yes it does. How to be delicious. Transcript goes
+      here. Yes it does. How to be delicious. Transcript goes here. Yes it does.
+      How to be delicious. Transcript goes here. Yes it does. How to be
+      delicious. Transcript goes here. Yes it does. How to be delicious.
+      Transcript goes here. Yes it does.
+    </p>
+
+    <p>
+      How to be delicious. Transcript goes here. Yes it does. How to be
+      delicious. Transcript goes here. Yes it does. How to be delicious.
+      Transcript goes here. Yes it does.
+    </p>
+  </section>
+</article>
+
+<article class="uneventful-comic">
+  <style>
+    .uneventful-comic {
+      background-color: #88b2ff;
+      font-family: "Lipro";
+    }
+  </style>
+  <h1>Slow comics</h1>
+  <p>by Flora Caulton</p>
 </article>
 
 <article class="torn-leaf-zero-opening">
@@ -1627,66 +1922,6 @@ Where you...
   <p>by Everybody</p>
 </article>
 
-<article class="be-delicious">
-  <style>
-    .be-delicious {
-      background-color: pink;
-    }
-  </style>
-  <h1>How to be delicious</h1>
-  <p>by Alex Dytrych</p>
-</article>
-<article class="non-euclidean-dreamer">
-  <style>
-    .non-euclidean-dreamer {
-      background-color: purple;
-      color: white;
-    }
-  </style>
-  <span>by Laura Kuttnig</span>
-</article>
-
-<article class="particles">
-  <style>
-    .particles {
-      background-color: black;
-      color: white;
-    }
-  </style>
-  <h1>2D gravity simulation with 15,000 particles</h1>
-  <span>by Andrew Gillett</span>
-</article>
-
-<article class="uneventful-comic">
-  <style>
-    .uneventful-comic {
-      background-color: lightblue;
-    }
-  </style>
-  <h1>Uneventful comic</h1>
-  <p>by Flora Caulton</p>
-</article>
-
-<article class="leaf-controller">
-  <style>
-    .leaf-controller {
-      background-color: grey;
-    }
-  </style>
-  <h1>Leaf controller</h1>
-  <p>by Tak Tran</p>
-</article>
-
-<article class="glass-smartly">
-  <style>
-    .mac {
-      background-color: #f0f0f0;
-    }
-  </style>
-  <h1>Around the Glass, Smartly</h1>
-  <p>by Jack Armitage</p>
-</article>
-
 <article class="mac">
   <style>
     .mac {
@@ -1736,14 +1971,44 @@ Where you...
   </article>
 </article>
 
-<article class="hill">
+<article class="particles">
   <style>
-    .hill {
-      background-color: greenyellow;
+    .particles {
+      background-color: black;
+      color: white;
     }
   </style>
-  <h1>hill</h1>
-  <p>by Eli Mellen</p>
+  <h1>2D gravity simulation with 15,000 particles</h1>
+  <span>by Andrew Gillett</span>
+</article>
+
+<article class="walking">
+  <style>
+    .walking {
+      background-color: white;
+    }
+  </style>
+  <h1>watching where i'm going</h1>
+</article>
+
+<article class="glass-smartly">
+  <style>
+    .glass-smartly {
+      background-color: yellow;
+    }
+  </style>
+  <h1>Around the Glass, Smartly</h1>
+  <p>by Jack Armitage</p>
+</article>
+
+<article class="non-euclidean-dreamer">
+  <style>
+    .non-euclidean-dreamer {
+      background-color: purple;
+      color: white;
+    }
+  </style>
+  <span>by Laura Kuttnig</span>
 </article>
 
 <article class="make-a-torn-leaf">
@@ -1761,6 +2026,16 @@ Where you...
   </style>
   <h1>Torn Plate</h1>
   <p>by Lu Wilson</p>
+</article>
+
+<article class="hill">
+  <style>
+    .hill {
+      background-color: greenyellow;
+    }
+  </style>
+  <h1>hill</h1>
+  <p>by Eli Mellen</p>
 </article>
 
 <article class="beep">
@@ -1798,6 +2073,14 @@ Where you...
   let playingFace = null;
   let currentFace = null;
   let currentSrc = null;
+
+  const playableLabels = document.querySelectorAll(".playable-label");
+  const playableLabelsMap = new Map();
+  for (const label of playableLabels) {
+    const currentLabels = playableLabelsMap.get(label.dataset.playableId) ?? [];
+    currentLabels.push(label);
+    playableLabelsMap.set(label.dataset.playableId, currentLabels);
+  }
 
   player.addEventListener("ended", () => {
     if (currentFace) {
@@ -1907,16 +2190,28 @@ Where you...
       playable.classList.add("playing");
       scrollIntoView(playable);
       playingPlayables.add(playable);
+      const labels = playableLabelsMap.get(playable.id);
+      labels.forEach((label) => {
+        label.classList.add("playing");
+      });
     });
 
     player.addEventListener("pause", () => {
       playable.classList.remove("playing");
       playingPlayables.delete(playable);
+      const labels = playableLabelsMap.get(playable.id);
+      labels.forEach((label) => {
+        label.classList.remove("playing");
+      });
     });
 
     player.addEventListener("ended", () => {
       playable.classList.remove("playing");
       playingPlayables.delete(playable);
+      const labels = playableLabelsMap.get(playable.id);
+      labels.forEach((label) => {
+        label.classList.remove("playing");
+      });
     });
   }
 
@@ -2126,4 +2421,106 @@ Where you...
   pathwayHeader.addEventListener("click", () => {
     setTabIndexViaPosition();
   });
+
+  const captionsButtons = document.querySelectorAll(".playable-captions");
+  let captionsOn = localStorage.getItem("captionsOn") === "true";
+
+  function toggleCaptions() {
+    captionsOn = !captionsOn;
+    localStorage.setItem("captionsOn", captionsOn);
+    if (captionsOn) {
+      turnOnCaptions();
+    } else {
+      turnOffCaptions();
+    }
+  }
+
+  function turnOnCaptions() {
+    captionsOn = true;
+    localStorage.setItem("captionsOn", "true");
+    captionsButtons.forEach((button) => {
+      button.classList.add("on");
+    });
+
+    for (const playable of playables) {
+      const iframe = playable.querySelector("iframe");
+      if (!iframe) {
+        console.error("No iframe found for playable", playable);
+        continue;
+      }
+
+      const player = playersById.get(playable.id);
+    }
+  }
+
+  function turnOffCaptions() {
+    captionsOn = false;
+    localStorage.setItem("captionsOn", "false");
+    captionsButtons.forEach((button) => {
+      button.classList.remove("on");
+    });
+
+    for (const playable of playables) {
+      const iframe = playable.querySelector("iframe");
+      if (!iframe) {
+        console.error("No iframe found for playable", playable);
+        continue;
+      }
+
+      const player = playersById.get(playable.id);
+      const srcWithoutDefaultTextTrack = iframe.src.replace(
+        "&defaultTextTrack=en",
+        ""
+      );
+
+      changePlayablePlayerSrc(player, iframe, srcWithoutDefaultTextTrack);
+    }
+  }
+
+  function changePlayableSrc(playable, src) {
+    const iframe = playable.querySelector("iframe");
+    if (!iframe) {
+      console.error("No iframe found for playable", playable);
+      return;
+    }
+
+    const player = playersById.get(playable.id);
+    const hasSrcChanged = src !== iframe.src;
+    if (!hasSrcChanged) {
+      return;
+    }
+
+    // Okay we need to do a few things here, in no particular order:
+    // - Change the iframe src
+    // - Dispose the old player
+    // - Create a new player
+    // - Make sure we're tracking the new player in the right places
+    // - If the player is playing, we need to make sure we're playing it again (from the correct point) after it comes back
+
+    const isPlaying = player.playing;
+    const time = player.currentTime;
+
+    player.dispose();
+    playersById.delete(playable.id);
+
+    iframe.src = src;
+
+    const newPlayer = Stream(iframe);
+    playersById.set(playable.id, newPlayer);
+
+    if (isPlaying) {
+      newPlayer.currentTime = time;
+      newPlayer.play();
+    }
+  }
+
+  captionsButtons.forEach((button) => {
+    button.addEventListener("click", toggleCaptions);
+  });
+
+  if (captionsOn) {
+    turnOnCaptions();
+  } else {
+    turnOffCaptions();
+  }
 </script>
